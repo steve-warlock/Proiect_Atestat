@@ -6,5 +6,14 @@
 # Installation
 
 ```
-git clone 
+git clone https://github.com/steve-warlock/Proiect_Atestat.git
 ```
+
+# Executing the .cpp files
+
+```
+clang++/c++/cc/g++ *.cpp -o app.out
+./app.out
+```
+
+# Enjoy :)

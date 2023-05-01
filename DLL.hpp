@@ -26,14 +26,24 @@ private:
     };
     node* head;
     node* tail;
+    
+    void quickSort(DLL::node* , DLL::node* , bool );
+    
 public:
     DLL();
-    DLL(DLL& );
+    DLL(const DLL& );
     ~DLL();
+    
+    inline bool isEmpty(){return head == NULL;}
     
     void AddToHead(DLL& , int );
     void AddToTail(DLL& , int );
-    inline bool isEmpty(){return head == NULL;}
+    
+    
+    
+    void sortAscending(DLL& );
+    void sortDescending(DLL& );
+    
     
     void DeleteNode(DLL& , DLL::node* );
     void DeleteNodes(DLL& , int );
@@ -41,6 +51,8 @@ public:
     int search(DLL& , int );
     
     void reset(DLL& );
+    
+    
     
     // citire/afisare standard
     friend std::istream& operator>> (std::istream& , DLL& );

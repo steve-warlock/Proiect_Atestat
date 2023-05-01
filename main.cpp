@@ -12,7 +12,7 @@
 
 void meniu(){
     system("clear");
-    std::cout << "\n\n\t\tListe Liniare Dublu Inlantuite\n\n";
+    std::cout << "\n\n\n\t\tListe Liniare Dublu Inlantuite\n\n";
     std::cout << "\n\t1. Citeste o lista (tastatura/fisier)\n";
     std::cout << "\n\t2. Afisarea listei/listelor (tastatura)\n";
     std::cout << "\n\t3. Concatenarea a 2 liste\n";
@@ -20,7 +20,8 @@ void meniu(){
     std::cout << "\n\t5. Adaugarea unui nod nou la sfarsitul listei\n";
     std::cout << "\n\t6. Cautarea pozitiei unui nod de cheie data\n";
     std::cout << "\n\t7. Stergerea nodurilor cu informatia x\n";
-    std::cout << "\n\t8. Resetarea listei/listelor\n";
+    std::cout << "\n\t8. Sortarea listelor (crescator/descrescator)\n";
+    std::cout << "\n\t9. Resetarea listei/listelor\n";
     std::cout << "\n\t0. Iesire\n\n";
 }
 
@@ -30,7 +31,7 @@ int m, op;
 bool ok = false;
 
 int main() {
-    system("afplay miracle.mp3 -v 1 -q 1 &>/dev/null &");
+    system("afplay miracle.mp3 -v 3 -q 1 &>/dev/null &");
     do{
         meniu();
         std::cout << "Introduceti optiunea: ";
@@ -82,6 +83,10 @@ int main() {
                 
             case 8:
                 solution::op_8();
+                break;
+                
+            case 9:
+                solution::op_9();
                 break;
                 
             case 0:

@@ -52,7 +52,11 @@ void case_7(DLL& ,DLL& ,int );
 
 void op_7();
 
-void case_8(DLL& ,DLL& );
+void case_8(DLL& );
 
 void op_8();
+
+void case_9(DLL& ,DLL& );
+
+void op_9();
 }

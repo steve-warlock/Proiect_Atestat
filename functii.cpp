@@ -10,7 +10,7 @@
 
 std::ifstream fin("fisiere/citire.in");
 
-std::string method, choice;
+std::string method, choice, first, second;
 
 namespace solution{
 
@@ -19,8 +19,8 @@ DLL p, q;
 
 void fail_case(){
     system("clear");
-    std::cout << "\nIntroduceti o optiune valida!";
-    std::cout << "\nApasati tasta ENTER pentru a va reintoarce...";
+    std::cout << "Introduceti o optiune valida!\n";
+    std::cout << "Apasati tasta Enter pentru a va reintoarce...";
     std::cin.ignore();
     system("clear");
 }
@@ -46,8 +46,8 @@ void tip_citire_tastatura(DLL& p, int n, std::istream& cin){
             std::cout << '\n';
             p.AddToTail(p,x);
         }
-        std::cout << "\nLista a fost introdusa!";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce...";
+        std::cout << "\nLista a fost introdusa!\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         cin.ignore();
         cin.get();
     }
@@ -62,8 +62,8 @@ void tip_citire_tastatura(DLL& p, int n, std::istream& cin){
             p.AddToHead(p,x);
             
         }
-        std::cout << "\nLista a fost introdusa!";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce...";
+        std::cout << "\nLista a fost introdusa!\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         cin.ignore();
         cin.get();
     }
@@ -92,8 +92,8 @@ void tip_citire_fisier(DLL& p, int n, std::ifstream& in){
             p.AddToTail(p,x);
         }
         in.get();
-        std::cout << "\nLista a fost introdusa!";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce...";
+        std::cout << "\nLista a fost introdusa!\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         system("clear");
     }
@@ -109,10 +109,11 @@ void tip_citire_fisier(DLL& p, int n, std::ifstream& in){
             p.AddToHead(p,x);
         }
         in.get();
-        std::cout << "\nLista a fost introdusa!";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce...";
+        std::cout << "\nLista a fost introdusa!\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cin.get();
+        std::cout << '\n';
         system("clear");
     }
     else
@@ -146,6 +147,8 @@ void citire_fisier(DLL& p, std::ifstream& in){
         throw std::runtime_error("Failed to open the file!");
 }
 
+
+
 void case_1(DLL& p){
     system("clear");
     if(p.isEmpty())
@@ -169,6 +172,7 @@ void case_1(DLL& p){
     {
         system("clear");
         std::cout << "Lista nu este vida. Alegeti optiunea 8 pentru a sterge continutul ascesteia.\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cin.get();
         std::cout << '\n';
@@ -178,7 +182,7 @@ void case_1(DLL& p){
 
 void op_1(){
     system("clear");
-    std::cout << "\nCe lista doriti sa cititi?(prima/doua) ";
+    std::cout << "Ce lista doriti sa cititi? (prima/doua) ";
     getline(std::cin,choice);
     if(verify(choice, "prima"))
         case_1(p);
@@ -197,14 +201,14 @@ void case_2(DLL& p, DLL& q, std::string& method){
         if(!p.isEmpty())
         {   std::cout << "\n" << method << " lista este: ";
             std::cout << p << '\n';
-            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniul principal...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
         }
         else
-        {   std::cout << "Lista este vida." << '\n';
-            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniul principal...";
+        {   std::cout << "Prima lista este vida." << '\n';
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -214,17 +218,17 @@ void case_2(DLL& p, DLL& q, std::string& method){
         if(verify(method, "doua"))
         {
             if(!q.isEmpty()){
-                std::cout << "\na " << method << " lista este: ";
+                std::cout << "A " << method << " lista este: ";
                 std::cout << q << '\n';
-                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniul principal...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
             }
             else
             {
-                std::cout << "Lista este vida." << '\n';
-                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniul principal...";
+                std::cout << "A doua lista este vida." << '\n';
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
@@ -237,27 +241,27 @@ void case_2(DLL& p, DLL& q, std::string& method){
             if(!p.isEmpty() || !q.isEmpty()){
                 if(!p.isEmpty())
                 { std::cout << "\nPrima" << " lista este: ";
-                    std::cout << p;
+                    std::cout << p << '\n';
                 }
                 else
                 {
-                    std::cout << '\n' << "Prima lista este vida.";
+                    std::cout << '\n' << "Prima lista este vida.\n";
                 }
                 if(!q.isEmpty())
-                { std::cout << "\nA doua" << " lista este: ";
-                    std::cout << p;
+                { std::cout << "A doua" << " lista este: ";
+                    std::cout << q << '\n';
                 }
                 else
                 {
-                    std::cout << "\nA doua" << " lista este vida.";
+                    std::cout << "A doua" << " lista este vida.\n";
                 }
             }
             else
                 if(p.isEmpty() && q.isEmpty())
                 {
-                    std::cout << "vide.";
+                    std::cout << "vide.\n";
                 }
-            std::cout << "\nApasati tasta Enter pentru a va reintoarce la meniul principal...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -281,7 +285,7 @@ void op_2(){
 void case_3(DLL& p, DLL& q){
     p += q;
     std::cout << "Cele 2 liste au fost concatenate.";
-    std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+    std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
     std::cin.ignore();
     std::cout << '\n';
     system("clear");
@@ -330,7 +334,7 @@ void case_4(DLL& p, DLL& q, int x){
     {
         p.AddToHead(p, x);
         std::cout << "Nodul cu informatia "<< x <<" a fost introdus in " << method << " lista.";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cout << '\n';
         system("clear");
@@ -340,7 +344,7 @@ void case_4(DLL& p, DLL& q, int x){
         {
             q.AddToHead(q, x);
             std::cout << "Nodul cu informatia "<< x <<" a fost introdus in a " << method << " lista.";
-            std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -351,7 +355,7 @@ void case_4(DLL& p, DLL& q, int x){
                 p.AddToHead(p, x);
                 q.AddToHead(q, x);
                 std::cout << "Nodul cu informatia " << x << " a fost introdus in " << method << " liste.";
-                std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
@@ -405,7 +409,7 @@ void case_5(DLL& p, DLL& q, int x){
     {
         p.AddToTail(p, x);
         std::cout << "Nodul cu informatia "<< x <<" a fost introdus in " << method << " lista.";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cout << '\n';
         system("clear");
@@ -415,7 +419,7 @@ void case_5(DLL& p, DLL& q, int x){
         {
             q.AddToTail(q, x);
             std::cout << "Nodul cu informatia "<< x <<" a fost introdus in a " << method << " lista.";
-            std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -426,7 +430,7 @@ void case_5(DLL& p, DLL& q, int x){
                 p.AddToTail(p, x);
                 q.AddToTail(q, x);
                 std::cout << "Nodul cu informatia " << x << " a fost introdus in " << method << " liste.";
-                std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
@@ -480,7 +484,7 @@ void case_6(DLL& p, DLL& q, int x){
             std::cout << "Nu exista nodul cu informatia " << x << " in " << method << " lista.\n";
         else
             std::cout << "Pozitia nodului cu informatia " << x << " din " << method <<" lista este " << p.search(p,x) << '.' << '\n';
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cout << '\n';
         system("clear");
@@ -492,7 +496,7 @@ void case_6(DLL& p, DLL& q, int x){
                 std::cout << "Nu exista nodul cu informatia " << x << " in a " << method << " lista.\n";
             else
                 std::cout << "Pozitia nodului cu informatia " << x << " din a " << method <<" lista este " << q.search(q,x) << '.' << '\n';
-            std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -508,16 +512,16 @@ void case_6(DLL& p, DLL& q, int x){
                     std::cout << "Nu exista nodul cu informatia " << x << " in a " << method << " lista.\n";
                 else
                     std::cout << "Pozitia nodului cu informatia " << x << " din a " << method <<" lista este " << q.search(q,x) << '.' << '\n';
-                std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
             }
-    else
-    {
-        fail_case();
-        case_6(p, q, x);
-    }
+            else
+            {
+                fail_case();
+                case_6(p, q, x);
+            }
 }
 
 void op_6(){
@@ -561,7 +565,7 @@ void case_7(DLL& p, DLL& q, int x){
         
         p.DeleteNodes(p,x);
         std::cout << "Nodurile cu informatia " << x << " au fost sterse din " << method << " lista.\n";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         std::cout << '\n';
         system("clear");
@@ -571,7 +575,7 @@ void case_7(DLL& p, DLL& q, int x){
         {
             q.DeleteNodes(q,x);
             std::cout << "Nodurile cu informatia " << x << " au fost sterse din a " << method << " lista.\n";
-            std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             std::cout << '\n';
             system("clear");
@@ -582,7 +586,7 @@ void case_7(DLL& p, DLL& q, int x){
                 p.DeleteNodes(p,x);
                 q.DeleteNodes(q,x);
                 std::cout << "Nodurile cu informatia " << x << " au fost sterse din " << method << " liste.\n";
-                std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 std::cout << '\n';
                 system("clear");
@@ -625,7 +629,123 @@ void op_7(){
         }
 }
 
-void case_8(DLL& p, DLL& q){
+void case_8(DLL& p)
+{
+    getline(std::cin, method);
+    if(verify(method, "crescator"))
+    {
+        p.sortAscending(p);
+    }
+    else
+        if(verify(method, "descrescator"))
+        {
+            p.sortDescending(p);
+        }
+        else
+        {
+            fail_case();
+            case_8(p);
+        }
+}
+
+void op_8()
+{
+    system("clear");
+    std::cout << "Ce lista doriti sa o sortati? (prima/doua/ambele) ";
+    getline(std::cin, choice);
+    std::cout << '\n';
+    if(verify(choice, "prima"))
+    {
+        if(!p.isEmpty()){
+            std::cout << "Cum doriti sa sortati " << choice << " lista? (crescator/descrescator) ";
+            case_8(p);
+            choice[0] = toupper(choice[0]);
+            std::cout << choice << " lista a fost sortata " << method << ".\n";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+            std::cin.ignore();
+            system("clear");
+        }
+        else
+            if(p.isEmpty())
+        {   choice[0] = toupper(choice[0]);
+            std::cout << choice << " lista este vida. Alegeti optiunea 1 pentru a introduce elemente in lista.\n";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+            std::cin.ignore();
+            system("clear");
+        }
+    }
+    else
+        if(verify(choice, "doua"))
+        {
+            if(!q.isEmpty())
+            {
+                std::cout << "Cum doriti sa sortati a " << choice << " lista? (crescator/descrescator) ";
+                case_8(q);
+                std::cout << "A " << choice << " lista a fost sortata " << method << ".\n";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                std::cin.ignore();
+                system("clear");
+            }
+            else if(q.isEmpty())
+            {
+                std::cout << "A " << choice << " lista este vida. Alegeti optiunea 1 pentru a introduce elemente in lista.\n";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                std::cin.ignore();
+                system("clear");
+            }
+        }
+        else
+            if(verify(choice, "ambele"))
+            {
+                choice[0] = toupper(choice[0]);
+                if(!p.isEmpty() && !q.isEmpty()){
+                    std::cout << "Cum doriti sa sortati listele?\n";
+                    std::cout << "Prima lista: crescator/descrescator? (crescator/descrescator) ";
+                    case_8(p);
+                    std::cout << "A doua lista: crescator/descrescator? (crescator/descrescator) ";
+                    case_8(q);
+                    std::cout << choice << " liste sunt sortate.\n";
+                    std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                    std::cin.ignore();
+                    system("clear");
+                }
+                else
+                {
+                    if(p.isEmpty())
+                    {
+                        std::cout << "Prima lista este vida. Alegeti optiunea 1 pentru a introduce elemente in lista.\n";
+                        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                        std::cin.ignore();
+                        system("clear");
+                    }
+                    else
+                        if(q.isEmpty())
+                        {
+                            std::cout << "A doua lista este vida. Alegeti optiunea 1 pentru a introduce elemente in lista.\n";
+                            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                            std::cin.ignore();
+                            system("clear");
+                        }
+                        else
+                            if(p.isEmpty() && q.isEmpty())
+                            {
+                                
+                                std::cout << choice << " liste sunt vide. Alegeti optiunea 1 pentru a introduce elemente in liste.\n";
+                                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
+                                std::cin.ignore();
+                                system("clear");
+                            }
+                }
+            }
+            else
+            {
+                fail_case();
+                op_8();
+            }
+    
+}
+
+void case_9(DLL& p, DLL& q){
     
     std::cout << "Ce lista doriti sa o stergeti? (prima/doua/ambele) ";
     getline(std::cin, method);
@@ -633,8 +753,9 @@ void case_8(DLL& p, DLL& q){
     if(verify(method, "prima"))
     {
         p.reset(p);
-        std::cout << method << " Lista a fost stearsa.\n";
-        std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+        method[0] = toupper(method[0]);
+        std::cout << method << " lista a fost stearsa.\n";
+        std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
         std::cin.ignore();
         system("clear");
     }
@@ -643,7 +764,7 @@ void case_8(DLL& p, DLL& q){
         {
             q.reset(q);
             std::cout << "A " << method << " Lista a fost stearsa.\n";
-            std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+            std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
             std::cin.ignore();
             system("clear");
         }
@@ -654,22 +775,20 @@ void case_8(DLL& p, DLL& q){
                 q.reset(q);
                 method[0] = toupper(method[0]);
                 std::cout << method << " liste au fost sterse.\n";
-                std::cout << "\nApasati tasta ENTER pentru a va reintoarce la meniu...";
+                std::cout << "Apasati tasta Enter pentru a va reintoarce la meniu...";
                 std::cin.ignore();
                 system("clear");
             }
             else
             {
                 fail_case();
-                case_8(p, q);
+                case_9(p, q);
             }
 }
 
-void op_8(){
+void op_9(){
     system("clear");
-    case_8(p, q);
+    case_9(p, q);
 }
 
 }
-
-

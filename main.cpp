@@ -12,7 +12,7 @@
 
 void meniu(){
     system("clear");
-    std::cout << "\n\n\n\t\tListe Liniare Dublu Inlantuite\n\n";
+    std::cout << "\n\n\n\t\t\tListe Liniare Dublu Inlantuite\n\n";
     std::cout << "\n\t1. Citeste o lista (tastatura/fisier)\n";
     std::cout << "\n\t2. Afisarea listei/listelor (tastatura)\n";
     std::cout << "\n\t3. Concatenarea a 2 liste\n";
@@ -22,32 +22,29 @@ void meniu(){
     std::cout << "\n\t7. Stergerea nodurilor cu informatia x\n";
     std::cout << "\n\t8. Sortarea listelor (crescator/descrescator)\n";
     std::cout << "\n\t9. Resetarea listei/listelor\n";
+    std::cout << "\n\t10. Pornire/Oprire muzica\n";
     std::cout << "\n\t0. Iesire\n\n";
 }
 
 
 char val[101];
 int m, op;
-bool ok = false;
+bool ok = true;
 
 int main() {
-    system("afplay miracle.mp3 -v 3 -q 1 &>/dev/null &");
+    solution::toggle_music();
     do{
         meniu();
         std::cout << "Introduceti optiunea: ";
         std::cin >> val;
         std::cin.get();
-        if(strlen(val) == 1)
-            if(val[0] >= '0' && val[0] <= '8')
-            { m = val[0] - '0'; ok = true;}
-            else
-            {m = 101; ok = false;}
-            else
-                if(strlen(val) > 1)
-                { ok = false;
-                    for(int i = 0; i < strlen(val); ++i)
-                        m = m * 10 + val[i] - '0';
-                }
+        m = 0;
+        for(int i = 0; i < strlen(val); ++i)
+            if(!(val[i] >= '0' && val[i] <= '9'))
+            {ok = false; break;}
+        else
+            m = m * 10 + val[i] - '0';
+        
         if(ok)
             op = m;
         else op = 101;
@@ -87,6 +84,10 @@ int main() {
                 
             case 9:
                 solution::op_9();
+                break;
+                
+            case 10:
+                solution::toggle_music();
                 break;
                 
             case 0:

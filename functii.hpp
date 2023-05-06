@@ -12,11 +12,18 @@
 
 namespace solution{
 
+
+void toggle_music();
+
 bool verify(std::string& ,const std::string& );
 
-void tip_citire_tastatura(DLL& , int , std::istream& );
+void convertire_citire_tastatura(int ,int& ,bool&,std::istream& );
 
-void tip_citire_fisier(DLL& , int , std::ifstream& );
+void convertire_citire_fisier(int ,int& ,bool& ,std::ifstream& );
+
+void tip_citire_tastatura(DLL& ,int ,std::istream& );
+
+void tip_citire_fisier(DLL& ,int ,std::ifstream& );
 
 void citire_tastatura(DLL& ,std::istream& );
 
@@ -28,7 +35,7 @@ void case_1(DLL& );
 
 void op_1();
 
-void case_2(DLL& , DLL& , std::string& );
+void case_2(DLL& ,DLL& ,std::string& );
 
 void op_2();
 
@@ -59,4 +66,5 @@ void op_8();
 void case_9(DLL& ,DLL& );
 
 void op_9();
+
 }
